@@ -1,47 +1,56 @@
 # 📊 Previsão de Estoque Inteligente na AWS com [SageMaker Canvas](https://aws.amazon.com/pt/sagemaker/canvas/)
 
-Bem-vindo ao desafio de projeto "Previsão de Estoque Inteligente na AWS com SageMaker Canvas. Neste Lab DIO, você aprenderá a usar o SageMaker Canvas para criar previsões de estoque baseadas em Machine Learning (ML). Siga os passos abaixo para completar o desafio!
+Bem-vindo ao meu projeto de Previsão de Estoque Inteligente na AWS com SageMaker Canvas. Este projeto se trata da aplicação prática de meus conhecimentos desenvolvidos ao longo do Bootcamp Nexa - Machine Learning para Iniciantes na AWS, realizado na plataforma DIO.me.
 
-## 📋 Pré-requisitos
+## Dataset
 
-Antes de começar, certifique-se de ter uma conta na AWS. Se precisar de ajuda para criar sua conta, confira nosso repositório [AWS Cloud Quickstart](https://github.com/digitalinnovationone/aws-cloud-quickstart).
+O dataset utilizado foi um dos próprios disponibilizados no template do projeto:
+[dataset-1000-com-preco-promocional-e-renovacao-estoque.csv](https://github.com/user-attachments/files/16415030/dataset-1000-com-preco-promocional-e-renovacao-estoque.csv)
 
+## Meu Modelo de ML
 
-## 🎯 Objetivos Deste Desafio de Projeto (Lab)
+- Quick Builded
+- Average Weighted Quantile Loss (wQL): 0.154
+- Mean Absolute Percent Error (MAPE): 1.789
+- Weighted Absolute Percent Error (WAPE): 0.250
+- Root Mean Square Error (RMSE): 25.934
+- Mean Absolute Scaled Error (MASE): 0.961
 
-![image](https://github.com/digitalinnovationone/lab-aws-sagemaker-canvas-estoque/assets/730492/72f5c21f-5562-491e-aa42-2885a3184650)
+Foi objetivada a previsão de três dias.
+Nos termos das margens de erros resultantes, é perceptível que a precisão das previsões tem relação direta com a forma da qual o modelo de ML foi construído, assim como também depende da quantidade de informações constantes nos datasets. 
+Neste cenário, seria possível alcançar uma maior precisão nas previsões com um alongamento do dataset e uma Standard Build.
 
-- Dê um fork neste projeto e reescreva este `README.md`. Sinta-se à vontade para detalhar todo o processo de criação do seu Modelo de ML para uma "Previsão de Estoque Inteligente".
-- Para isso, siga o [passo a passo] descrito a seguir e evolua as suas habilidades em ML no-code com o Amazon SageMaker Canvas.
-- Ao concluir, envie a URL do seu repositório com a solução na plataforma da DIO.
+## Impacto das Colunas
 
+Concluiu-se que a coluna PRECO tem 17.39% de impacto na QUANTIDADE_ESTOQUE.
 
-## 🚀 Passo a Passo
+## Resultados e Previsões
 
-### 1. Selecionar Dataset
+Optei por exportar as previsões dos próximos três dias, abordando os cinco primeiros itens do estoque.
 
--   Navegue até a pasta `datasets` deste repositório. Esta pasta contém os datasets que você poderá escolher para treinar e testar seu modelo de ML. Sinta-se à vontade para gerar/enriquecer seus próprios datasets, quanto mais você se engajar, mais relevante esse projeto será em seu portfólio.
--   Escolha o dataset que você usará para treinar seu modelo de previsão de estoque.
--   Faça o upload do dataset no SageMaker Canvas.
+### Item 1000
 
-### 2. Construir/Treinar
+![1000](https://github.com/user-attachments/assets/0efc4768-96ac-4d2b-89b4-6b25bd02e6d2)
 
--   No SageMaker Canvas, importe o dataset que você selecionou.
--   Configure as variáveis de entrada e saída de acordo com os dados.
--   Inicie o treinamento do modelo. Isso pode levar algum tempo, dependendo do tamanho do dataset.
+### Item 1001
 
-### 3. Analisar
+![1001](https://github.com/user-attachments/assets/78d6612c-c382-4d85-a6a5-d4528f4be3cb)
 
--   Após o treinamento, examine as métricas de performance do modelo.
--   Verifique as principais características que influenciam as previsões.
--   Faça ajustes no modelo se necessário e re-treine até obter um desempenho satisfatório.
+### Item 1002
 
-### 4. Prever
+![1002](https://github.com/user-attachments/assets/0b24449d-f693-4056-88d0-26e7f0fa8985)
 
--   Use o modelo treinado para fazer previsões de estoque.
--   Exporte os resultados e analise as previsões geradas.
--   Documente suas conclusões e qualquer insight obtido a partir das previsões.
+### Item 1003
 
-## 🤔 Dúvidas?
+![1003](https://github.com/user-attachments/assets/3088c8d4-5825-4e7a-9210-1a3856df96a5)
 
-Esperamos que esta experiência tenha sido enriquecedora e que você tenha aprendido mais sobre Machine Learning aplicado a problemas reais. Se tiver alguma dúvida, não hesite em abrir uma issue neste repositório ou entrar em contato com a equipe da DIO.
+### Item 1004
+
+![1004](https://github.com/user-attachments/assets/06118b02-fad9-439b-b266-6a1cf7eb552c)
+
+## Síntese
+
+Temos aqui como critério do dataset o fato de que o estoque de um determinado item é reposto (100) quando sua quantidade é zerada.
+Embora o modelo criado tenha resultado em dados não tão realistas no caso o Item 1000, onde previu-se a reposição em situações em que não a haveria, é conclusível que as previsões dos outros itens mostram estatísticas das quais podem propor diversos insights valiosos, capazes de trazer vantagens consideráveis em um caso real.
+
+É nestes termos que o Amazon SageMaker Canvas se mostra como uma ferramenta capaz de trazer muita vantagem competitiva ao seu usuário, principalmente em utilizações preditivas ou analíticas, visto que um modelo de Machine Learning é capaz de visualizar dados e padrões de forma em que um ser humano seria muitas vezes inábil.
